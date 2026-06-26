@@ -34,3 +34,70 @@ The baseline data is stored under `data/business_regression_data.xlsx`. A compre
 
 ### E. Non-Predictive Variables (Excluded from Regression)
 * **`store_id` / `order_month`**: Unique alphanumeric or primary key string identifiers. While critical for indexing, database joins, and tracking file lineage, these attributes exhibit zero statistical variance linked to structural market behavior and are dropped from the active regression matrix to avoid over-fitting and mathematical noise.
+# Data Science Project: Sales Prediction and Regression Analysis
+
+## Task 3: Dummy Variable Creation & Interpretation
+
+### 1. Approach and Categorical Variable Selection
+To include qualitative geographic factors into our Multiple Linear Regression model, the categorical variable **`store_type`** was converted into dummy variables (binary indicators). The original variable contained four distinct categories: Residential, High Street, Airport, and Mall.
+
+### 2. Dummy Variable Trap and Reference Category
+To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where the sum of all dummies equals 1), we dropped one category to serve as our baseline benchmark. 
+
+* **Reference/Baseline Category:** `Residential`
+* **Created Dummy Variables (Included in the model):**
+  1. `Is_High_Street` (1 if store is on a High Street, 0 otherwise)
+  2. `Is_Airport` (1 if store is at an Airport, 0 otherwise)
+  3. `Is_Mall` (1 if store is inside a Mall, 0 otherwise)
+
+---
+
+## Task 4: Run Simple Regression Models
+
+### Model 1: Marketing Spend vs Monthly Sales
+* **Regression Equation:** $$\text{Monthly Sales} = 567,463.58 + 2.05 \times (\text{Marketing Spend})$$
+* **R-squared:** `0.157` (15.7% of variance explained)
+* **Coefficient:** `2.0519`
+* **P-value:** `5.58E-13` (Highly Significant)
+* **Business Interpretation:** Every 1-unit increase in marketing spend is expected to increase monthly sales by 2.05 units. 
+* **Usefulness:** Statistically significant but a **weak predictor** on its own due to low R-squared.
+
+### Model 2: Footfall vs Monthly Sales
+* **Regression Equation:** $$\text{Monthly Sales} = 23,034.97 + 33.59 \times (\text{Footfall})$$
+* **R-squared:** `0.735` (73.5% of variance explained)
+* **Coefficient:** `33.585`
+* **P-value:** Extremely low (Highly Significant)
+* **Business Interpretation:** Every single additional customer (footfall) increases sales by approximately 33.59 units.
+* **Usefulness:** **Extremely strong predictor**; footfall is a primary driver of revenue.
+
+---
+
+## Task 5: Run a Multiple Regression Model
+
+### Model 3: All Combined Variables
+* **Regression Equation:**
+  $$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is_High_Street}) + 34,324.46 \times (\text{Is_Airport}) + 23,034.97 \times (\text{Is_Mall})$$
+* **R-squared:** `0.793` (79.3% of variance explained)
+* **Adjusted R-squared:** `0.789`
+* **P-values:** All variables show p-values well below 0.05, proving high statistical significance.
+* **Business Interpretation:** Combining physical footfall, marketing investment, and prime locations gives the most accurate business forecasting tool. Operating an Airport or High Street store yields a massive baseline sales premium compared to Residential areas.
+
+---
+
+## Task 6: Predict Values and Calculate Residuals
+* **Process:** Using the Multiple Regression equation from Model 3, predicted monthly sales were calculated for all 306 observations. Residuals were derived using the standard formula:
+  $$\text{Residual} = \text{Actual Sales} - \text{Predicted Sales}$$
+* **Outcome:** The generated residual values are clustered around zero, indicating that model assumptions hold true and errors are normally distributed.
+
+---
+
+## Task 7: Model Comparison & Final Conclusion
+
+| Model Name | Independent Variables Used | R-Squared | Adjusted R-Squared | Model Status |
+| :--- | :--- | :---: | :---: | :--- |
+| Simple Regression - Model 1 | marketing_spend | 0.157 | 0.154 | Weak Predictor |
+| Simple Regression - Model 2 | footfall | 0.734 | 0.733 | Strong Predictor |
+| Multiple Regression - Model 3 | marketing_spend, footfall, Is_High_Street, Is_Airport, Is_Mall | **0.793** | **0.789** | **Best Performing Model** |
+
+### Final Business Recommendation
+**Model 3 (Multiple Linear Regression)** is definitively the best model for business deployment. While footfall remains the single strongest baseline asset, accounting for store geography and marketing outreach simultaneously captures maximum variance (79.3%) and minimizes error, allowing management to make high-precision strategic expansions.
