@@ -55,20 +55,20 @@ To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where
 ## Task 4: Run Simple Regression Models
 
 ### Model 1: Marketing Spend vs Monthly Sales
-* **Regression Equation:** $$\text{Monthly Sales} = 567,463.58 + 2.05 \times (\text{Marketing Spend})$$
-* **R-squared:** `0.157` (15.7% of variance explained)
-* **Coefficient:** `2.0519`
-* **P-value:** `5.58E-13` (Highly Significant)
+* **Regression Equation:** `Monthly Sales = 567463.58 + 2.0519 * (Marketing Spend)`
+* **R-squared:** 0.157 (15.7% of variance explained)
+* **Coefficient:** 2.0519
+* **P-value:** 5.58E-13 (Highly Significant)
 * **Business Interpretation:** Every 1-unit increase in marketing spend is expected to increase monthly sales by 2.05 units. 
-* **Usefulness:** Statistically significant but a **weak predictor** on its own due to low R-squared.
+* **Usefulness:** Statistically significant but a weak predictor on its own due to low R-squared.
 
 ### Model 2: Footfall vs Monthly Sales
-* **Regression Equation:** $$\text{Monthly Sales} = 23,034.97 + 33.59 \times (\text{Footfall})$$
-* **R-squared:** `0.735` (73.5% of variance explained)
-* **Coefficient:** `33.585`
+* **Regression Equation:** `Monthly Sales = 23034.97 + 33.585 * (Footfall)`
+* **R-squared:** 0.735 (73.5% of variance explained)
+* **Coefficient:** 33.585
 * **P-value:** Extremely low (Highly Significant)
 * **Business Interpretation:** Every single additional customer (footfall) increases sales by approximately 33.59 units.
-* **Usefulness:** **Extremely strong predictor**; footfall is a primary driver of revenue.
+* **Usefulness:** Extremely strong predictor; footfall is a primary driver of revenue.
 
 ---
 
@@ -76,9 +76,9 @@ To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where
 
 ### Model 3: All Combined Variables
 * **Regression Equation:**
- $$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is\_High\_Street}) + 34,324.46 \times (\text{Is\_Airport}) + 23,034.97 \times (\text{Is\_Mall})$$
-* **R-squared:** `0.793` (79.3% of variance explained)
-* **Adjusted R-squared:** `0.789`
+  `Monthly Sales = 382891.96 + 1.15 * (Marketing Spend) + 33.59 * (Footfall) + 14198.21 * (Is_High_Street) + 34324.46 * (Is_Airport) + 23034.97 * (Is_Mall)`
+* **R-squared:** 0.793 (79.3% of variance explained)
+* **Adjusted R-squared:** 0.789
 * **P-values:** All variables show p-values well below 0.05, proving high statistical significance.
 * **Business Interpretation:** Combining physical footfall, marketing investment, and prime locations gives the most accurate business forecasting tool. Operating an Airport or High Street store yields a massive baseline sales premium compared to Residential areas.
 
@@ -86,7 +86,7 @@ To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where
 
 ## Task 6: Predict Values and Calculate Residuals
 * **Process:** Using the Multiple Regression equation from Model 3, predicted monthly sales were calculated for all 306 observations. Residuals were derived using the standard formula:
-$$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is\_High\_Street}) + 34,324.46 \times (\text{Is\_Airport}) + 23,034.97 \times (\text{Is\_Mall})$$
+  `Residual = Actual Sales - Predicted Sales`
 * **Outcome:** The generated residual values are clustered around zero, indicating that model assumptions hold true and errors are normally distributed.
 
 ---
