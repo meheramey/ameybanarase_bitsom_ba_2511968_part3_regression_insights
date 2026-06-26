@@ -86,7 +86,7 @@ To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where
 
 ## Task 6: Predict Values and Calculate Residuals
 * **Process:** Using the Multiple Regression equation from Model 3, predicted monthly sales were calculated for all 306 observations. Residuals were derived using the standard formula:
-  $$\text{Residual} = \text{Actual Sales} - \text{Predicted Sales}$$
+$$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is\_High\_Street}) + 34,324.46 \times (\text{Is\_Airport}) + 23,034.97 \times (\text{Is\_Mall})$$
 * **Outcome:** The generated residual values are clustered around zero, indicating that model assumptions hold true and errors are normally distributed.
 
 ---
