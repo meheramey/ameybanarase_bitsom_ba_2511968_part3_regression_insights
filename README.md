@@ -76,7 +76,7 @@ To avoid the **Dummy Variable Trap** (perfect multicollinearity/redundancy where
 
 ### Model 3: All Combined Variables
 * **Regression Equation:**
-  $$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is_High_Street}) + 34,324.46 \times (\text{Is_Airport}) + 23,034.97 \times (\text{Is_Mall})$$
+ $$\text{Monthly Sales} = 382,891.96 + 1.15 \times (\text{Marketing Spend}) + 33.59 \times (\text{Footfall}) + 14,198.21 \times (\text{Is\_High\_Street}) + 34,324.46 \times (\text{Is\_Airport}) + 23,034.97 \times (\text{Is\_Mall})$$
 * **R-squared:** `0.793` (79.3% of variance explained)
 * **Adjusted R-squared:** `0.789`
 * **P-values:** All variables show p-values well below 0.05, proving high statistical significance.
